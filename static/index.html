@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="app">
+    <header>
+        <h1>Прогноз веса руды</h1>
+    </header>
+
+    <div class="tabs">
+        <button class="tab active" data-tab="predict">Предсказание</button>
+        <button class="tab" data-tab="add">Добавить данные</button>
+        <button class="tab" data-tab="model">Модель</button>
+    </div>
+
+    <div class="panel" id="tab-predict">
+        <div class="panel-title">Введите производительность питателей (%)</div>
+        <div class="inputs-grid">
+            <div class="input-group">
+                <label>Питатель 1</label>
+                <input type="number" id="p-f1" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+            <div class="input-group">
+                <label>Питатель 2</label>
+                <input type="number" id="p-f2" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+            <div class="input-group">
+                <label>Питатель 3</label>
+                <input type="number" id="p-f3" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+        </div>
+        <button class="btn-primary" id="btn-predict">Рассчитать</button>
+        <div class="result-box" id="predict-result" style="display:none">
+            <div class="result-label">Предсказанный вес руды</div>
+            <div class="result-value" id="result-value">—</div>
+            <div class="result-unit">т/ч</div>
+        </div>
+    </div>
+
+    <div class="panel hidden" id="tab-add">
+        <div class="panel-title">Добавить новую запись и дообучить модель</div>
+        <div class="inputs-grid">
+            <div class="input-group">
+                <label>Питатель 1</label>
+                <input type="number" id="a-f1" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+            <div class="input-group">
+                <label>Питатель 2</label>
+                <input type="number" id="a-f2" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+            <div class="input-group">
+                <label>Питатель 3</label>
+                <input type="number" id="a-f3" placeholder="0.0" step="0.1" min="0" max="100"/>
+                <span class="unit">%</span>
+            </div>
+            <div class="input-group">
+                <label>Реальный вес</label>
+                <input type="number" id="a-w" placeholder="0.0" step="0.1"/>
+                <span class="unit">т/ч</span>
+            </div>
+        </div>
+        <button class="btn-primary" id="btn-add">Сохранить</button>
+        <div class="result-box" id="add-result" style="display:none">
+            <div class="result-label" id="add-result-text">—</div>
+        </div>
+    </div>
+
+    <div class="panel hidden" id="tab-model">
+        <div class="panel-title">Параметры модели</div>
+        <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Загрузка...</div>
+            </div>
+        </div>
+        <div class="formula" id="formula"></div>
+    </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
